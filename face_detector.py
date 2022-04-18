@@ -1,21 +1,36 @@
+''' In this face detection there are 3 steps:
+        1. get a crap load of data of faces(opencv is used)
+        2. turn these images into black and white(so the computer will detect easily)
+        3. train the algorithm to detect faces
+'''
+
+
 #importing the cv2 library that is opencv. that is a open source library for detecting tons of images
 import cv2
 
-#trained_face_data is the variable where the face detection data is stored.it is pre-trained data from the opencv library.
+'''trained_face_data is the variable where the face detection data is stored.it is pre-trained data from the opencv library.
+    "haarcascade_frontalface_default.xml" is a bunch of data that is already trained
+    "CascadeClassifier" is function for detectors
+    classifiers are the fancy name for the detectors'''
 trained_face_data = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+
 
 #random image to detection
 img = cv2.imread('random_guy.jpg')
-
-
 
 '''we need to convert the image to black and white, then only it can detect easily 
     so we use cvtColor function to convert the "img " to "COLOR_BGRf2GRAY" (that is black and white) '''
 converted_grey_img= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
-#imshow is used to display the detection in our image file in the name of the face detection
-cv2.imshow('face detection',converted_grey_img)
+#here the faces will detect in a rectangular manner by detectmultiscale function,it will detect in different sizes that we input. 
+face_rectangle=trained_face_data.detectMultiScale(converted_grey_img)
+#this will print the rectangle in (x,y,w,h) format
+print(face_rectangle)
 
+
+
+#imshow is used to display the detection in our image file in the name of the face detection
+#cv2.imshow('face detection',converted_grey_img)
 #this waitKey will help us to wait until we press any key to continue,without this function the image will show only milliseconds
 cv2.waitKey()
 
