@@ -8,6 +8,9 @@
 #importing the cv2 library that is opencv. that is a open source library for detecting tons of images
 import cv2
 
+#this will import random numbers
+from random import randrange
+
 '''trained_face_data is the variable where the face detection data is stored.it is pre-trained data from the opencv library.
     "haarcascade_frontalface_default.xml" is a bunch of data that is already trained
     "CascadeClassifier" is function for detectors
@@ -16,7 +19,7 @@ trained_face_data = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 
 #random image to detection
-img = cv2.imread('random_guy.jpg')
+img = cv2.imread('WIN_20220418_11_47_29_Pro.jpg')
 
 '''we need to convert the image to black and white, then only it can detect easily 
     so we use cvtColor function to convert the "img " to "COLOR_BGRf2GRAY" (that is black and white) '''
@@ -31,7 +34,11 @@ face_rectangle=trained_face_data.detectMultiScale(converted_grey_img)
 here x2 and y2 is x+w and y+h
 (255,0,0) is the color of the rectangle
 2 is the width of line in the rectangle'''
-cv2.rectangle(img,(90,25),(264+90,264+25),(0,255,0),2)
+#by using for loop we can draw n number of rectangles in the image
+for(x,y,w,h) in face_rectangle:  
+ cv2.rectangle(img,(x,y),(x+w,y+h),(randrange(256),randrange(256),randrange(256)),2)
+
+
 
 #imshow is used to display the detection in our image file in the name of the face detection
 cv2.imshow('face detection',img)
