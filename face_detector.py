@@ -24,13 +24,17 @@ converted_grey_img= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
 #here the faces will detect in a rectangular manner by detectmultiscale function,it will detect in different sizes that we input. 
 face_rectangle=trained_face_data.detectMultiScale(converted_grey_img)
-#this will print the rectangle in (x,y,w,h) format
-print(face_rectangle)
+'''#this will print the rectangle in (x,y,w,h) format
+    print(face_rectangle)'''
 
-
+'''to draw the rectangle cv2.rectangle(img, (x1, y1), (x2, y2), (255,0,0), 2), 
+here x2 and y2 is x+w and y+h
+(255,0,0) is the color of the rectangle
+2 is the width of line in the rectangle'''
+cv2.rectangle(img,(90,25),(264+90,264+25),(0,255,0),2)
 
 #imshow is used to display the detection in our image file in the name of the face detection
-#cv2.imshow('face detection',converted_grey_img)
+cv2.imshow('face detection',img)
 #this waitKey will help us to wait until we press any key to continue,without this function the image will show only milliseconds
 cv2.waitKey()
 
