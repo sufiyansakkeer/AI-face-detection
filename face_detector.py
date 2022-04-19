@@ -43,7 +43,8 @@ while True:
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-
+# to release the video captured
+webcam.release()
 
 
 
