@@ -22,8 +22,8 @@ trained_face_data = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 #random image to detection
 #img = cv2.imread('WIN_20220418_11_47_29_Pro.jpg')
 
-#to capture from webcam, 0 means its default camera and we can also upload the video file in between '_here _' 
-webcam= cv2.VideoCapture(0)
+#to capture from webcam, 0 means its default camera and we can also upload the video file if we put any video file in the place of 0
+webcam= cv2.VideoCapture('WIN_20220419_16_30_06_Pro.mp4')
 
 while True:
     successfully_frame_read,frame=webcam.read()
